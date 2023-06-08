@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'dev.silverandro'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+dependencies {
+    implementation 'com.github.Col-E:CAFED00D:1.10.2'
+    shadow 'com.github.Col-E:CAFED00D:1.10.2'
+
+    implementation 'org.slf4j:slf4j-simple:2.0.7'
+    shadow 'org.slf4j:slf4j-simple:2.0.7'
+}
+
+application {
+    mainClass = 'dev.silverandro.jar_patcher.Main'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release.set(8)
+}
